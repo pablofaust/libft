@@ -6,7 +6,7 @@
 #    By: pfaust <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 15:46:59 by pfaust            #+#    #+#              #
-#    Updated: 2017/11/23 12:16:29 by pfaust           ###   ########.fr        #
+#    Updated: 2018/10/10 13:04:07 by pfaust           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c \
 	ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c \
 	ft_strtrim.c ft_tolower.c ft_toupper.c ft_pow.c ft_wordlen.c \
-	ft_nbwords.c
+	ft_nbwords.c ft_itoa_base_ll.c
 BIN = $(SRC:.c=.o)
 
 all : $(NAME)
