@@ -6,17 +6,16 @@
 /*   By: pfaust <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 12:58:32 by pfaust            #+#    #+#             */
-/*   Updated: 2018/10/11 14:23:57 by pfaust           ###   ########.fr       */
+/*   Updated: 2018/10/11 12:31:29 by pfaust           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdio.h"
 
 static int		digits(unsigned long long n, unsigned int base)
 {
-	unsigned long long		ptr;
-	int						len;
+	unsigned int		ptr;
+	int					len;
 
 	ptr = n;
 	if (n == 0)
@@ -29,30 +28,23 @@ static int		digits(unsigned long long n, unsigned int base)
 	}
 	return (len);
 }
-
 char			*ft_itoa_base_ll(long long n, unsigned int base)
 {
-	int					len;
-	char				*str;
-	int					neg;
-	unsigned long long	nb;
+	int			len;
+	char		*str;
 
 	if (base < 2 || base > 16)
 		return (NULL);
-	neg = (n < 0) ? 1 : 0;
-	nb = (neg == 1) ? (unsigned long long)-n : (unsigned long long)n;
-	len = digits(nb, base) + neg;
-	if (!(str = ft_strnew(len + neg)))
+	len = digits(n, base);
+	if (!(str = ft_strnew(len)))
 		return (NULL);
-	while (--len >= neg)
+	while (--len >= 0)
 	{
-		if (nb % base < 10)
-			str[len] = nb % base + 48;
+		if (n % base < 10)
+			str[len] = n % base + 48;
 		else
-			str[len] = nb % base - 10 + 'a';
-		nb = nb / base;
+			str[len] = n % base - 10 + 'a';
+		n = n / base;
 	}
-	if (neg)
-		str[len] = '-';
 	return (str);
 }
