@@ -6,13 +6,13 @@
 /*   By: pfaust <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 17:04:33 by pfaust            #+#    #+#             */
-/*   Updated: 2017/11/15 16:14:13 by pfaust           ###   ########.fr       */
+/*   Updated: 2018/10/18 10:44:31 by pfaust           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlen(const char *str)
+int			ft_strlen(const char *str)
 {
 	long unsigned int		len;
 
