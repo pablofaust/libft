@@ -71,6 +71,7 @@ char				**ft_strsplit(const char *s, char c);
 char				*ft_itoa(int n);
 char				*ft_itoa_ll(long long n);
 char				*ft_itoa_base(int n, int base);
+char				*ft_itoa_base_uint(unsigned int n, int base);
 char				*ft_itoa_base_ll(long long n, unsigned int base);
 char				*ft_itoa_base_ull(unsigned long long n, unsigned int base);
 void				ft_putchar(char c);

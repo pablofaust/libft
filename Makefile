@@ -24,7 +24,7 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c \
 	ft_strtrim.c ft_tolower.c ft_toupper.c ft_pow.c ft_wordlen.c \
 	ft_nbwords.c ft_itoa_base_ll.c ft_itoa_base_ull.c ft_itoa_base.c \
-	ft_never_negative.c ft_itoa_ll.c
+	ft_never_negative.c ft_itoa_ll.c ft_itoa_base_uint.c
 
 BIN = $(SRC:.c=.o)
 
