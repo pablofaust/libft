@@ -29,7 +29,7 @@ static int		digits(unsigned int n, int base)
 	}
 	return (len);
 }
-char			*ft_itoa_base_uint(unsigned int nb, int base)
+char			*ft_itoa_base_uint(unsigned int nb, int base, char a)
 {
 	int				len;
 	char			*str;
@@ -44,7 +44,7 @@ char			*ft_itoa_base_uint(unsigned int nb, int base)
 		if (nb % base < 10)
 			str[len] = nb % base + 48;
 		else
-			str[len] = nb % base - 10 + 'a';
+			str[len] = (a == 'a') ? nb % base - 10 + 'a' : nb % base - 10 + 'A';
 		nb = nb / base;
 	}
 	return (str);
