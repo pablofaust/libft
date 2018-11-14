@@ -11,30 +11,44 @@
 # **************************************************************************** #
 
 NAME = libft.a
-SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
-	ft_isdigit.c ft_isprint.c ft_itoa.c ft_lstadd.c ft_lstdel.c \
-	ft_lstdelone.c ft_lstiter.c ft_lstmap.c ft_lstnew.c ft_memalloc.c \
-	ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c \
-	ft_memmove.c ft_memset.c ft_putchar.c ft_putchar_fd.c ft_putendl.c \
-	ft_putendl_fd.c ft_putnbr.c ft_putnbr_fd.c ft_putstr.c ft_putstr_fd.c \
-	ft_strcat.c ft_strchr.c ft_strclr.c ft_strcmp.c ft_strcpy.c \
-	ft_strdel.c ft_strdup.c ft_strequ.c ft_striter.c ft_striteri.c \
-	ft_strjoin.c ft_strlcat.c ft_strlen.c ft_strmap.c ft_strmapi.c \
-	ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c \
-	ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c \
-	ft_strtrim.c ft_tolower.c ft_toupper.c ft_pow.c ft_wordlen.c \
-	ft_nbwords.c ft_itoa_base_ll.c ft_itoa_base_ull.c ft_itoa_base.c \
-	ft_never_negative.c ft_itoa_ll.c ft_itoa_base_uint.c
+FLAGS = -Wall -Wextra -Werror
+INCLUDES = -I./includes
+HEADER = includes/libft.h
+SRC = ft_atoi ft_bzero ft_isalnum ft_isalpha ft_isascii \
+	ft_isdigit ft_isprint ft_itoa ft_lstadd ft_lstdel \
+	ft_lstdelone ft_lstiter ft_lstmap ft_lstnew ft_memalloc \
+	ft_memccpy ft_memchr ft_memcmp ft_memcpy ft_memdel \
+	ft_memmove ft_memset ft_putchar ft_putchar_fd ft_putendl \
+	ft_putendl_fd ft_putnbr ft_putnbr_fd ft_putstr ft_putstr_fd \
+	ft_strcat ft_strchr ft_strclr ft_strcmp ft_strcpy \
+	ft_strdel ft_strdup ft_strequ ft_striter ft_striteri \
+	ft_strjoin ft_strlcat ft_strlen ft_strmap ft_strmapi \
+	ft_strncat ft_strncmp ft_strncpy ft_strnequ ft_strnew \
+	ft_strnstr ft_strrchr ft_strsplit ft_strstr ft_strsub \
+	ft_strtrim ft_tolower ft_toupper ft_pow ft_wordlen \
+	ft_nbwords ft_itoa_base_ll ft_itoa_base_ull ft_itoa_base \
+	ft_never_negative ft_itoa_ll ft_itoa_base_uint
 
-BIN = $(SRC:.c=.o)
+OBJS = $(addprefix objs/, $(addsuffix .o, \
+	   $(SRC) \
+	 ))
 
 all : $(NAME)
-$(NAME) :
-	gcc -c -Wall -Wextra -Werror $(SRC)
-	ar rc $(NAME) $(BIN)
-	ranlib $(NAME)
+
+$(NAME): objs $(OBJS)
+	@printf  "\033[92m\033[1:32mCompiling -------------> \033[91m$(NAME)\033[0m:\033[0m%-16s\033[32m[✔]\033[0m\n"
+	@ar rcs $(NAME) $(OBJS)
+
+objs/%.o: src/%.c $(HEADER)
+	@printf  "\033[1:92m Bin Compiling $(NAME)\033[0m %-31s\033[32m[$<]\033[0m\n" ""
+	@gcc -o $@ -c $< $(FLAGS) $(INCLUDES)
+	@printf "\033[A\033[2K"
+objs:
+	@mkdir -p objs/
 clean :
-	rm -f $(BIN)
+	@rm -rf $(OBJS)
+	@printf  "\033[1:32mCleaning object files -> \033[91m$(NAME)\033[0m\033[1:32m:\033[0m%-16s\033[32m[✔]\033[0m\n"
 fclean : clean
-	rm -f $(NAME)
+	@rm -rf $(NAME)
+	@printf  "\033[1:32mCleaning binary -------> \033[91m$(NAME)\033[0m\033[1:32m:\033[0m%-16s\033[32m[✔]\033[0m\n"
 re : fclean all
